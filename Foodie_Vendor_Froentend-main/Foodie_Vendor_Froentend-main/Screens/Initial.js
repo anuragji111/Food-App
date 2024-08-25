@@ -1,0 +1,20 @@
+import {memo, useEffect} from "react";
+import {getData} from "../Global Functon/Token";
+
+function InitialRoute({navigation}) {
+    async function get (){
+        const data =  await getData()
+        console.log(data)
+        if(data?.token===undefined||data?.token===null){
+            navigation.replace('Login')
+        }else{
+            navigation.replace('MainPage')
+        }
+    }
+    useEffect(()=>{
+        get()
+    })
+    return <></>
+}
+
+export default memo(InitialRoute)
